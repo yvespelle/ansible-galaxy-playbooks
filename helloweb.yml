@@ -1,0 +1,9 @@
+---
+- hosts: all
+    - name: install helloweb
+      docker_container: 
+        name: helloweb
+        image: yvespelle/helloweb
+        ports: 
+          - 81:80
+      when: (ansible_distribution == '{{linux_distribution}}' or ansible_os_family == '{{linux_family}}')
