@@ -13,3 +13,15 @@
       
     - name: redemarrer des services RedHat/CentOs
       shell: systemctl restart http mariadb && systemctl enable http mariadb
+      when: ansible_os_family == 'RedHat'
+    
+    - name: redemarrer des services Debian/Ubuntu
+      shell: systemctl restart apache2 mariadb && systemctl enable apache2 mariadb
+      when: ansible_os_family == 'Debian'
+      
+    - name: ouverture du parefeu RedHat
+      shell: firewall-cmd --zone=public --permanent --add-service=http && firewall-cmd --reload
+      when: ansible_os_family == 'RedHat'
+
+
+
