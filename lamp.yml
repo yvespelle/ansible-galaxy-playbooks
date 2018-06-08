@@ -10,3 +10,6 @@
       yum: name={{item}} state=present
       with_items: '{{lamp_packages_el}}'
       when: ansible_os_family == 'RedHat'
+      
+    - name: redemarrer des services RedHat/CentOs
+      shell: systemctl restart http mariadb && systemctl enable http mariadb
