@@ -7,4 +7,4 @@
         image: yvespelle/helloweb
         ports: 
           - 81:80
-      when: (ansible_distribution == '{{linux_distribution}}' or ansible_os_family == '{{linux_family}}')
+      when: (ansible_distribution == 'Ubuntu' or ansible_os_family == 'Debian')
